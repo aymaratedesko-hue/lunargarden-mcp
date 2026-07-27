@@ -3,13 +3,6 @@ main = "src/worker.js"
 compatibility_date = "2025-06-18"
 compatibility_flags = ["nodejs_compat"]
 
-# KV namespace binding for caching astrology + weather + soil responses.
-# Replace `id` below with the real KV namespace ID after running:
-#   wrangler kv:namespace create CACHE
-[[kv_namespaces]]
-binding = "CACHE"
-id = "REPLACE_WITH_REAL_KV_NAMESPACE_ID"
-
 # Environment variables (PUBLIC, non-secret). Empty by default.
 [vars]
 ENVIRONMENT = "development"
