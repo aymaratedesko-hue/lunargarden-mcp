@@ -1,0 +1,25 @@
+name = "lunargarden-mcp"
+main = "src/worker.js"
+compatibility_date = "2025-06-18"
+compatibility_flags = ["nodejs_compat"]
+
+# KV namespace binding for caching astrology + weather + soil responses.
+# Replace `id` below with the real KV namespace ID after running:
+#   wrangler kv:namespace create CACHE
+[[kv_namespaces]]
+binding = "CACHE"
+id = "REPLACE_WITH_REAL_KV_NAMESPACE_ID"
+
+# Environment variables (PUBLIC, non-secret). Empty by default.
+[vars]
+ENVIRONMENT = "development"
+
+# Secrets are set via `wrangler secret put`. Do NOT put real values here.
+#   wrangler secret put ASTROLOGY_API_USER_ID
+#   wrangler secret put ASTROLOGY_API_KEY
+#
+# Real calls to AstrologyAPI.com are DISABLED in default config:
+#   LIVE_ASTROLOGY=false (default in worker.js)
+#
+# To enable live AstrologyAPI.com calls (only after explicit approval):
+#   LIVE_ASTROLOGY=true
