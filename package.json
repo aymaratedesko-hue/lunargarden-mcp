@@ -10,9 +10,6 @@
     "deploy": "wrangler deploy",
     "test": "node --test test/"
   },
-  "dependencies": {
-    "@modelcontextprotocol/sdk": "^1.0.0"
-  },
   "devDependencies": {
     "wrangler": "^3.90.0"
   },
