@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LunarGarden MCP</title>
+  <link rel="stylesheet" href="/styles.css" />
+  <link rel="icon" href="data:," />
+</head>
+<body>
+  <header class="site-header">
+    <h1>LunarGarden MCP</h1>
+    <p class="subtitle">Astrology-aware garden care planning - same-origin MCP server</p>
+    <p class="metadata">
+      <span class="meta-item">Transport: JSON-RPC 2.0 over HTTP</span>
+      <span class="meta-item">Endpoint: POST /mcp</span>
+      <span class="meta-item">Agents Guide: <a href="/agents-guide.md">/agents-guide.md</a></span>
+    </p>
+  </header>
+
+  <main class="container">
+    <section class="controls">
+      <h2>Plan garden care</h2>
+      <form id="plan-form" autocomplete="off">
+        <div class="row">
+          <label>
+            Latitude
+            <input id="lat" type="number" step="any" value="10.762622" required />
+          </label>
+          <label>
+            Longitude
+            <input id="lon" type="number" step="any" value="106.660172" required />
+          </label>
+          <label>
+            Hours
+            <select id="hours">
+              <option value="24" selected>24</option>
+              <option value="48">48</option>
+              <option value="72">72</option>
+            </select>
+          </label>
+        </div>
+        <div class="row">
+          <label class="grow">
+            Plants (comma-separated)
+            <input id="plants" type="text" value="tomato, basil, lettuce" required />
+          </label>
+        </div>
+        <div class="actions">
+          <button type="submit" id="plan-btn">Get plan</button>
+          <button type="button" id="lunar-btn">Lunar signal</button>
+          <button type="button" id="weather-btn">Weather + soil</button>
+          <button type="button" id="uv-btn">UV</button>
+          <button type="button" id="windows-btn">Find windows</button>
+          <button type="button" id="brief-btn">Agent brief</button>
+        </div>
+      </form>
+      <p id="status" class="status"></p>
+    </section>
+
+    <section id="result-section" class="result" hidden>
+      <h2 id="result-title">Result</h2>
+      <pre id="result-json" class="result-json"></pre>
+    </section>
+
+    <section id="plan-board" class="plan-board" hidden>
+      <h2>Plan board</h2>
+      <div id="plan-list"></div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>LunarGarden MCP - same-origin only, no client-side secrets.</p>
+  </footer>
+
+  <!-- Cache-buster: bump version on every publish to invalidate browser cache. -->
+  <script src="/app.js?v=lunargarden-20260727-1" defer></script>
+</body>
+</html>
