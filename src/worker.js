@@ -135,10 +135,13 @@ export default {
       }
     }
 
-    return textResponse("Not Found", "text/plain; charset=utf-8", "no-store").then((r) => {
-      // Adjust status to 404 without rebuilding
-      const out = new Response(r.body, { status: 404, headers: r.headers });
-      return out;
-    });
+   return new Response("Not Found", {
+  status: 404,
+  headers: {
+    "Content-Type": "text/plain; charset=utf-8",
+    "Cache-Control": "no-store",
+    ...CORS_HEADERS,
+  },
+});
   },
 };
