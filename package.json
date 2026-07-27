@@ -1,0 +1,23 @@
+{
+  "name": "lunargarden-mcp",
+  "version": "0.1.0",
+  "description": "Public Model Context Protocol (MCP) server for LunarGarden - an astrology + weather + soil garden care planning app",
+  "private": false,
+  "type": "module",
+  "main": "src/worker.js",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "test": "node --test test/"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.0"
+  },
+  "devDependencies": {
+    "wrangler": "^3.90.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "license": "MIT"
+}
