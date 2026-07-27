@@ -8,14 +8,14 @@
 // All other methods return JSON-RPC error -32601 (method not found).
 // Per JSON-RPC 2.0, errors include a numeric code and a human-readable message.
 
-import { getLunarGardenSignalTool } from "./tools/lunar.js";
-import { getWeatherSoilForecastTool } from "./tools/weather.js";
-import { getSoilProfileTool } from "./tools/soil.js";
-import { getAirQualityUvTool } from "./tools/airquality.js";
-import { findGardenCareWindowsTool } from "./tools/windows.js";
-import { planGardenCareTool } from "./tools/plan.js";
-import { explainCareDecisionTool } from "./tools/explain.js";
-import { generateAgentBriefTool } from "./tools/brief.js";
+import { definition as lunarDef, handler as lunarHandler } from "./tools/lunar.js";
+import { definition as weatherDef, handler as weatherHandler } from "./tools/weather.js";
+import { definition as soilDef, handler as soilHandler } from "./tools/soil.js";
+import { definition as uvDef, handler as uvHandler } from "./tools/airquality.js";
+import { definition as windowsDef, handler as windowsHandler } from "./tools/windows.js";
+import { definition as planDef, handler as planHandler } from "./tools/plan.js";
+import { definition as explainDef, handler as explainHandler } from "./tools/explain.js";
+import { definition as briefDef, handler as briefHandler } from "./tools/brief.js";
 
 const SERVER_INFO = {
   name: "lunargarden-mcp",
@@ -28,25 +28,25 @@ const SERVER_CAPABILITIES = {
 };
 
 const TOOL_DEFS = [
-  getLunarGardenSignalTool.definition,
-  getWeatherSoilForecastTool.definition,
-  getSoilProfileTool.definition,
-  getAirQualityUvTool.definition,
-  findGardenCareWindowsTool.definition,
-  planGardenCareTool.definition,
-  explainCareDecisionTool.definition,
-  generateAgentBriefTool.definition,
+  lunarDef,
+  weatherDef,
+  soilDef,
+  uvDef,
+  windowsDef,
+  planDef,
+  explainDef,
+  briefDef,
 ];
 
 const TOOL_HANDLERS = {
-  get_lunar_garden_signal: getLunarGardenSignalTool.handler,
-  get_weather_soil_forecast: getWeatherSoilForecastTool.handler,
-  get_soil_profile: getSoilProfileTool.handler,
-  get_air_quality_uv: getAirQualityUvTool.handler,
-  find_garden_care_windows: findGardenCareWindowsTool.handler,
-  plan_garden_care: planGardenCareTool.handler,
-  explain_care_decision: explainCareDecisionTool.handler,
-  generate_agent_brief: generateAgentBriefTool.handler,
+  get_lunar_garden_signal: lunarHandler,
+  get_weather_soil_forecast: weatherHandler,
+  get_soil_profile: soilHandler,
+  get_air_quality_uv: uvHandler,
+  find_garden_care_windows: windowsHandler,
+  plan_garden_care: planHandler,
+  explain_care_decision: explainHandler,
+  generate_agent_brief: briefHandler,
 };
 
 function rpcError(id, code, message, data) {

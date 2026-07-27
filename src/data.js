@@ -527,10 +527,11 @@ This document describes the public Model Context Protocol (MCP) interface for Lu
 
 ## Transport
 
-- Protocol: MCP (JSON-RPC 2.0 over HTTP)
-- Endpoint: POST /mcp (same-origin)
-- Content-Type: application/json
-- Version: advertised by the SDK at runtime (no hardcoded version in code)
+- Protocol: MCP-compatible JSON-RPC 2.0 over HTTP
+- Endpoint: \`POST /mcp\` (same-origin)
+- Content-Type: \`application/json\`
+- Implementation: a hand-written JSON-RPC 2.0 + MCP-compatible HTTP router in \`src/jsonrpc.js\`; the \`@modelcontextprotocol/sdk\` npm package is **not** used at runtime.
+- Advertised \`protocolVersion\`: hardcoded to \`"2025-06-18"\` in \`src/jsonrpc.js\` (not detected from an SDK). Update the constant there if the MCP spec date changes.
 
 ## Initialization
 
@@ -540,13 +541,13 @@ POST /mcp
   "id": 1,
   "method": "initialize",
   "params": {
-    "protocolVersion": "<runtime-detected>",
+    "protocolVersion": "2025-06-18",
     "capabilities": {},
     "clientInfo": { "name": "<agent>", "version": "<x.y.z>" }
   }
 }
 
-The server returns its declared protocol version and server capabilities.
+The server returns its declared protocol version (2025-06-18) and server capabilities.
 
 ## Tool list
 
